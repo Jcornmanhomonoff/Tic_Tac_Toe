@@ -1,0 +1,23 @@
+.border-right {
+  border-right: 2px solid $white;
+}
+
+.border-left {
+  border-left: 2px solid $white;
+}
+
+.border-top {
+  border-top: 2px solid $white;
+}
+
+.border-bottom {
+  border-bottom: 2px solid $white;
+}
+
+.gameboard {
+  text-align: center;
+
+  .box {
+    height: 170px;
+  }
+}
