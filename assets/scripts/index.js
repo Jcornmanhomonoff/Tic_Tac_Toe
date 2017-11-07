@@ -2,11 +2,35 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const events = require('./auth/events')
+const authEvents = require('./auth/events')
+const gameEvents = require('./game-logic/events')
+const apiEvents = require('./api/events')
 
 $(() => {
   setAPIOrigin(location, config)
-  events.addHandlers()
+  authEvents.authAddHandlers()
+  apiEvents.apiAddHandlers()
+  $('#menu-toggle').hide()
+  $('#login-form').hide()
+  $('.gameboard').hide()
+  $('.switch-signup').hide()
+  $('.switch-signup').on('click', function () {
+    $('#login-form').show()
+    $('#signin-form').toggle()
+  })
+  $('.switch-signin').on('click', function () {
+    $('#login-form').show()
+    $('#signup-form').hide()
+    $('.switch-signup').show()
+    $('.switch-signin').toggle()
+  })
+  $('#menu-toggle').on('click', function (e) {
+    e.preventDefault()
+    console.log('toggled')
+    $('#wrapper').toggleClass('toggled')
+  })
+  gameEvents.moveCounter()
+  gameEvents.onClick()
 })
 
 // use require with a reference to bundle the file and use it in this file
@@ -14,9 +38,3 @@ $(() => {
 
 // use require without a reference to ensure a file is bundled
 require('./example')
-
-$('#menu-toggle').on('click', function (e) {
-  e.preventDefault()
-  console.log('toggled')
-  $('#wrapper').toggleClass('toggled')
-})

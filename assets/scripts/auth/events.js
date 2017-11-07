@@ -3,15 +3,37 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
-const addHandlers = () => {
-  $('#signup-form').on('submit', function (event) {
-    const data = getFormFields(this)
-    event.preventDefault()
-    console.log(data)
-    api.signUp(ui.success, ui.failure, data)
-  })
+const onSignUp = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+  api.signUp(data)
+  .then(ui.signInSuccess, data)
+  .catch(ui.failure)
+}
+
+const onLogIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+  api.logIn(data)
+  .done(ui.logInSuccess)
+  .fail(ui.failure)
+}
+//
+// const onSignOut = function (event) {
+//   event.preventDefault()
+//   api.signOut()
+//     .done(ui.signOutSuccess)
+//     .fail(ui.failure)
+// }
+
+const authAddHandlers = () => {
+  $('#signup-form').on('submit', onSignUp)
+  $('#login-form').on('submit', onLogIn)
+  // $('.signout').on('click', onSignOut)
 }
 
 module.exports = {
-  addHandlers
+  authAddHandlers
 }
