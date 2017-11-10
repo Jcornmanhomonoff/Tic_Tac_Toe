@@ -20,6 +20,12 @@ const onLogIn = function (event) {
   .done(ui.logInSuccess)
   .fail(ui.failure)
 }
+
+const onChangePw = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  console.log(data)
+}
 //
 // const onSignOut = function (event) {
 //   event.preventDefault()
@@ -31,6 +37,7 @@ const onLogIn = function (event) {
 const authAddHandlers = () => {
   $('#signup-form').on('submit', onSignUp)
   $('#login-form').on('submit', onLogIn)
+  $('#changePw-form').on('submit', onChangePw)
   // $('.signout').on('click', onSignOut)
 }
 

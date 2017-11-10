@@ -21,3 +21,8 @@
     height: 170px;
   }
 }
+
+.not-active {
+   pointer-events: none;
+   cursor: default;
+}

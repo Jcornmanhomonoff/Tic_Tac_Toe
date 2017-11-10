@@ -15,13 +15,16 @@ $(() => {
   $('.gameboard').hide()
   $('.switch-signup').hide()
   $('.switch-signup').on('click', function () {
-    $('#login-form').show()
+    $('#login-form').toggle()
     $('#signin-form').toggle()
+    $('#signup-form').toggle()
+    $('.switch-signin').toggle()
+    $('.switch-signup').toggle()
   })
   $('.switch-signin').on('click', function () {
-    $('#login-form').show()
-    $('#signup-form').hide()
-    $('.switch-signup').show()
+    $('#login-form').toggle()
+    $('#signup-form').toggle()
+    $('.switch-signup').toggle()
     $('.switch-signin').toggle()
   })
   $('#menu-toggle').on('click', function (e) {

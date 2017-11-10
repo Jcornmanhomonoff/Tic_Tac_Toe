@@ -16,8 +16,7 @@ const newGame = function () {
 }
 
 const updateGame = function (index, value, over) {
-  console.log(index, value)
-  console.log(store.game)
+  // console.log(index, value)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',

@@ -1,13 +1,14 @@
 'use strict'
 const store = require('../store')
-const gameLogicUi = require('../game-logic/events')
+// const gameLogicUi = require('../game-logic/events')
 
 const createGameSuccess = (data) => {
   console.log(data)
   store.game = data.game
   console.log(store.game)
-  $('.box').bind('click', gameLogicUi.onClick)
+  // $('.box').bind('click', gameLogicUi.onClick)
   $('.box').html('')
+  $('.gameboard').removeClass('not-active')
   const gameboard = ['', '', '', '', '', '', '', '', '']
   return gameboard
 }

@@ -28,7 +28,7 @@ const checkWinner = function () {
   (gameboard[2] !== '' && gameboard[2] === gameboard[5] && gameboard[2] === gameboard[8]) ||
   (gameboard[0] !== '' && gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8])) {
     over = true
-    $('.box').unbind('click')
+    $('.gameboard').addClass('not-active')
     console.log(over)
     console.log(gameboard)
   } else {
