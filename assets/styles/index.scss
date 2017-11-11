@@ -5,6 +5,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'login';
 @import 'gameboard';
 
+html, body {
+  height: 100%
+}
+
 body {
   background: $teal;
+}
+
+body, a, button {
+  cursor: crosshair;
 }

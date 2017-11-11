@@ -29,7 +29,7 @@
         </li>
         <li>
           <!-- Link trigger modal -->
-          <a href="#" id="changePw" data-toggle="modal" data-target="#changePw-modal">Change Password</a>
+          <a id="changePw" data-toggle="modal" data-target="#changePw-modal">Change Password</a>
         </li>
         <li>
           <a href="#" id="signOut">Sign Out</a>
@@ -90,17 +90,17 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title">Change Password</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <form id="changePw-form">
+            <input name="passwords[old]" type="password" class="form-control" placeholder="Password">
+            <input name="passwords[new]" type="password" class="form-control" placeholder="Confirm Password">
+            <button type="submit" class="btn btn-primary" id="signup-btn">Save Password</button>
+          </form>
         </div>
       </div>
     </div>

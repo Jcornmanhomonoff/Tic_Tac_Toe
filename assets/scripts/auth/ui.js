@@ -18,6 +18,10 @@ const logInSuccess = (data) => {
   $('#menu-toggle').show()
   $('.switch-signup').hide()
 }
+
+const changePwSuccess = () => {
+  console.log('Change password success')
+}
 //
 // const signOutSuccess = () => {
 //   console.log('successful sign out')
@@ -33,6 +37,7 @@ const failure = () => {
 module.exports = {
   signUpSuccess,
   logInSuccess,
+  changePwSuccess,
   // signOutSuccess,
   failure
 }

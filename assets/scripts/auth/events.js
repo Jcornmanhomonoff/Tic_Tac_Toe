@@ -25,6 +25,9 @@ const onChangePw = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
+  api.changePw(data)
+  .done(ui.changePwSuccess)
+  .fail(ui.failure)
 }
 //
 // const onSignOut = function (event) {
