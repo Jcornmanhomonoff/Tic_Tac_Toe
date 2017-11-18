@@ -76,26 +76,17 @@ const switchPlayer = function () {
   }
 }
 
-// increase number of moves by 1 on click
-const moveCounter = function () {
-  $('.box').on('click', function (event) {
-    const currentCell = $(this)
-    if (currentCell.text() === '') {
-      moves += 1
-      console.log(moves)
-    }
-  })
-}
-
 // alternate between placing X & O on the board &
 // push into gameboard array
 const onClick = function () {
   $('.box').on('click', function (event) {
     const currentCell = $(this)
-    if ($(this).text() === '') {
+    if (currentCell.text() === '') {
+      moves += 1
+      console.log(moves)
       if (moves % 2 !== 0) {
-        $(this).text('X')
-        const value = $(this).text()
+        currentCell.text('X')
+        const value = currentCell.text()
         const index = currentCell.attr('data-index')
         gameboard[index] = currentPlayer
         switchPlayer()
@@ -105,7 +96,7 @@ const onClick = function () {
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
       } else {
-        $(this).text('O')
+        currentCell.text('O')
         const value = $(this).text()
         const index = currentCell.attr('data-index')
         gameboard[index] = currentPlayer
@@ -123,6 +114,6 @@ const onClick = function () {
 module.exports = {
   onClick,
   switchPlayer,
-  moveCounter,
+  // moveCounter,
   gameboard
 }

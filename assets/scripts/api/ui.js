@@ -6,7 +6,6 @@ const createGameSuccess = (data) => {
   console.log(data)
   store.game = data.game
   console.log(store.game)
-  // $('.box').bind('click', gameLogicUi.onClick)
   $('.box').html('')
   $('.gameboard').removeClass('not-active')
   const gameboard = ['', '', '', '', '', '', '', '', '']

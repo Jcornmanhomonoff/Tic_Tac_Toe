@@ -32,7 +32,6 @@ $(() => {
     console.log('toggled')
     $('#wrapper').toggleClass('toggled')
   })
-  gameEvents.moveCounter()
   gameEvents.onClick()
 })
 
