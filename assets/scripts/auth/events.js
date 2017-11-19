@@ -8,7 +8,7 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   console.log(data)
   api.signUp(data)
-  .then(ui.signInSuccess, data)
+  .done(ui.signUpSuccess, data)
   .catch(ui.failure)
 }
 
@@ -29,19 +29,19 @@ const onChangePw = function (event) {
   .done(ui.changePwSuccess)
   .fail(ui.failure)
 }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   api.signOut()
-//     .done(ui.signOutSuccess)
-//     .fail(ui.failure)
-// }
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  api.signOut()
+    .done(ui.signOutSuccess)
+    .fail(ui.failure)
+}
 
 const authAddHandlers = () => {
   $('#signup-form').on('submit', onSignUp)
   $('#login-form').on('submit', onLogIn)
   $('#changePw-form').on('submit', onChangePw)
-  // $('.signout').on('click', onSignOut)
+  $('#signOut').on('click', onSignOut)
 }
 
 module.exports = {

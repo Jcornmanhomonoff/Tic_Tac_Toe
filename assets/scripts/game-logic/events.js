@@ -114,6 +114,5 @@ const onClick = function () {
 module.exports = {
   onClick,
   switchPlayer,
-  // moveCounter,
   gameboard
 }

@@ -25,7 +25,8 @@
           <a href="#" id="newGame">New Game</a>
         </li>
         <li>
-          <a href="#" id="showGames">Game History</a>
+          <!-- Link trigger modal -->
+          <a id="showGames" data-toggle="modal" data-target="#showGames-modal">Game History</a>
         </li>
         <li>
           <!-- Link trigger modal -->
@@ -87,6 +88,27 @@
   <!-- MODAL CONTENT -->
   <!-- Change Password Modal -->
   <div class="modal fade" id="changePw-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Change Password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="changePw-form">
+            <input name="passwords[old]" type="password" class="form-control" placeholder="Password">
+            <input name="passwords[new]" type="password" class="form-control" placeholder="Confirm Password">
+            <button type="submit" class="btn btn-primary" id="signup-btn">Save Password</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show Games Modal -->
+  <div class="modal fade" id="showGames-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
