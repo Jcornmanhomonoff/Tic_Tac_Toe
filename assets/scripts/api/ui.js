@@ -5,11 +5,10 @@ const store = require('../store')
 const createGameSuccess = (data) => {
   console.log(data)
   store.game = data.game
+  store.gameboard = data.game.cells
   console.log(store.game)
   $('.box').html('')
   $('.gameboard').removeClass('not-active')
-  const gameboard = ['', '', '', '', '', '', '', '', '']
-  return gameboard
 }
 
 const updateGameSuccess = (data) => {
