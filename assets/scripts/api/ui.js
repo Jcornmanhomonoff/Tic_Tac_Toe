@@ -17,12 +17,26 @@ const updateGameSuccess = (data) => {
   console.log('UPDATE SUCESS')
 }
 
+const getGamesSuccess = (data) => {
+  console.log(data.games.length)
+  store.games = data.games
+  $('.games-played').text(store.games.length)
+  checkGamesWon()
+}
+
 const failure = () => {
   console.log('nope')
+}
+
+const checkGamesWon = () => {
+  (store.games).forEach(function (game) {
+    console.log(game)
+  })
 }
 
 module.exports = {
   createGameSuccess,
   updateGameSuccess,
+  getGamesSuccess,
   failure
 }

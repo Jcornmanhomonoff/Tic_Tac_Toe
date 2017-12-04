@@ -7,6 +7,7 @@ const store = require('../store')
 // const winner = require('./winner')
 
 let over = false
+let winner = ''
 
 // const wins = [[store.gameboard[0], store.gameboard[1], store.gameboard[2]],
 //              [store.gameboard[3], store.gameboard[4], store.gameboard[5]],
@@ -27,9 +28,11 @@ const checkWinner = function () {
   (store.gameboard[2] !== '' && store.gameboard[2] === store.gameboard[5] && store.gameboard[2] === store.gameboard[8]) ||
   (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[4] && store.gameboard[0] === store.gameboard[8])) {
     over = true
+    winner = currentPlayer
     $('.gameboard').addClass('not-active')
     console.log(over)
     console.log(store.gameboard)
+    return winner
   } else {
     over = false
     console.log(over)
@@ -37,6 +40,11 @@ const checkWinner = function () {
   }
   return over
 }
+
+// const checkDraw = function () {
+//   console.log('there are ', moves)
+//   console.log('game is ', over)
+// }
 
 // const facheckWinner = function () {
 //   wins.forEach(function (arr) {
@@ -88,9 +96,9 @@ const onClick = function () {
         const value = currentCell.text()
         const index = currentCell.attr('data-index')
         store.gameboard[index] = currentPlayer
-        switchPlayer()
         console.log(store.gameboard)
         checkWinner()
+        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
@@ -99,13 +107,15 @@ const onClick = function () {
         const value = $(this).text()
         const index = currentCell.attr('data-index')
         store.gameboard[index] = currentPlayer
-        switchPlayer()
         console.log(store.gameboard)
         checkWinner()
+        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
       }
+      console.log(over)
+      return over
     }
   })
 }
