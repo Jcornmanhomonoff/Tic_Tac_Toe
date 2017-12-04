@@ -4,6 +4,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'slider-sidebar';
 @import 'login';
 @import 'gameboard';
+@import 'auth';
+@import 'webkit-browser';
 
 html, body {
   height: 100%
