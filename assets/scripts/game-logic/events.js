@@ -3,41 +3,48 @@
 // const getFormFields = require('../../../lib/get-form-fields')
 const api = require('../api/api')
 const ui = require('../api/ui')
+const store = require('../store')
 // const winner = require('./winner')
 
-const gameboard = ['', '', '', '', '', '', '', '', '']
-
 let over = false
+let winner = ''
 
-// const wins = [[gameboard[0], gameboard[1], gameboard[2]],
-//              [gameboard[3], gameboard[4], gameboard[5]],
-//              [gameboard[6], gameboard[7], gameboard[8]],
-//              [gameboard[0], gameboard[3], gameboard[6]],
-//              [gameboard[1], gameboard[4], gameboard[7]],
-//              [gameboard[2], gameboard[5], gameboard[8]],
-//              [gameboard[0], gameboard[4], gameboard[8]]]
+// const wins = [[store.gameboard[0], store.gameboard[1], store.gameboard[2]],
+//              [store.gameboard[3], store.gameboard[4], store.gameboard[5]],
+//              [store.gameboard[6], store.gameboard[7], store.gameboard[8]],
+//              [store.gameboard[0], store.gameboard[3], store.gameboard[6]],
+//              [store.gameboard[1], store.gameboard[4], store.gameboard[7]],
+//              [store.gameboard[2], store.gameboard[5], store.gameboard[8]],
+//              [store.gameboard[0], store.gameboard[4], store.gameboard[8]]]
 
 const checkWinner = function () {
   console.log('in check winner')
   if (
-  (gameboard[0] !== '' && gameboard[0] === gameboard[1] && gameboard[0] === gameboard[2]) ||
-  (gameboard[3] !== '' && gameboard[3] === gameboard[4] && gameboard[3] === gameboard[5]) ||
-  (gameboard[6] !== '' && gameboard[6] === gameboard[7] && gameboard[6] === gameboard[8]) ||
-  (gameboard[0] !== '' && gameboard[0] === gameboard[3] && gameboard[0] === gameboard[6]) ||
-  (gameboard[1] !== '' && gameboard[1] === gameboard[4] && gameboard[1] === gameboard[7]) ||
-  (gameboard[2] !== '' && gameboard[2] === gameboard[5] && gameboard[2] === gameboard[8]) ||
-  (gameboard[0] !== '' && gameboard[0] === gameboard[4] && gameboard[0] === gameboard[8])) {
+  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[1] && store.gameboard[0] === store.gameboard[2]) ||
+  (store.gameboard[3] !== '' && store.gameboard[3] === store.gameboard[4] && store.gameboard[3] === store.gameboard[5]) ||
+  (store.gameboard[6] !== '' && store.gameboard[6] === store.gameboard[7] && store.gameboard[6] === store.gameboard[8]) ||
+  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[3] && store.gameboard[0] === store.gameboard[6]) ||
+  (store.gameboard[1] !== '' && store.gameboard[1] === store.gameboard[4] && store.gameboard[1] === store.gameboard[7]) ||
+  (store.gameboard[2] !== '' && store.gameboard[2] === store.gameboard[5] && store.gameboard[2] === store.gameboard[8]) ||
+  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[4] && store.gameboard[0] === store.gameboard[8])) {
     over = true
+    winner = currentPlayer
     $('.gameboard').addClass('not-active')
     console.log(over)
-    console.log(gameboard)
+    console.log(store.gameboard)
+    return winner
   } else {
     over = false
     console.log(over)
-    console.log(gameboard)
+    console.log(store.gameboard)
   }
   return over
 }
+
+// const checkDraw = function () {
+//   console.log('there are ', moves)
+//   console.log('game is ', over)
+// }
 
 // const facheckWinner = function () {
 //   wins.forEach(function (arr) {
@@ -77,7 +84,7 @@ const switchPlayer = function () {
 }
 
 // alternate between placing X & O on the board &
-// push into gameboard array
+// push into store.gameboard array
 const onClick = function () {
   $('.box').on('click', function (event) {
     const currentCell = $(this)
@@ -88,10 +95,10 @@ const onClick = function () {
         currentCell.text('X')
         const value = currentCell.text()
         const index = currentCell.attr('data-index')
-        gameboard[index] = currentPlayer
-        switchPlayer()
-        console.log(gameboard)
+        store.gameboard[index] = currentPlayer
+        console.log(store.gameboard)
         checkWinner()
+        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
@@ -99,20 +106,21 @@ const onClick = function () {
         currentCell.text('O')
         const value = $(this).text()
         const index = currentCell.attr('data-index')
-        gameboard[index] = currentPlayer
-        switchPlayer()
-        console.log(gameboard)
+        store.gameboard[index] = currentPlayer
+        console.log(store.gameboard)
         checkWinner()
+        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
       }
+      console.log(over)
+      return over
     }
   })
 }
 
 module.exports = {
   onClick,
-  switchPlayer,
-  gameboard
+  switchPlayer
 }

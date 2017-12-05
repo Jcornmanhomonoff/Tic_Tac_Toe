@@ -4,8 +4,30 @@ body {
     overflow-x: hidden;
  }
 
-/* Toggle Styles */
+/* Toggle sidebar */
+.hamburger {
+  text-align: left;
+  font-size: 2em;
+  color: white;
+}
 
+.game-title, .close-sidebar {
+  display: inline !important;
+}
+
+.close-sidebar {
+  display: inline;
+  float: right;
+  padding-right: 20px;
+  font-size: 1.5em;
+  margin-top: -3px;
+}
+.game-history {
+  background: #666;
+  display: none;
+  padding-left: 20px;
+}
+/* Toggle Styles */
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -14,11 +36,12 @@ body {
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled {
-    padding-left: 250px;
-}
+// #wrapper.toggled {
+//     padding-left: 250px;
+// }
 
 #sidebar-wrapper {
+    color: white;
     z-index: 1000;
     position: fixed;
     left: 250px;
@@ -101,9 +124,9 @@ body {
         padding-left: 0;
     }
 
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
+    // #wrapper.toggled {
+    //     padding-left: 250px;
+    // }
 
     #sidebar-wrapper {
         width: 0;
