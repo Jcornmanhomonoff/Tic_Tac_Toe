@@ -4,6 +4,7 @@ body {
     overflow-x: hidden;
  }
 
+/* Toggle sidebar */
 .hamburger {
   text-align: left;
   font-size: 2em;
@@ -13,12 +14,16 @@ body {
 .game-title, .close-sidebar {
   display: inline !important;
 }
+
 .close-sidebar {
   display: inline;
   float: right;
-  margin-right: 20px;
+  padding-right: 20px;
   font-size: 1.5em;
   margin-top: -3px;
+}
+.game-history {
+  display: none;
 }
 /* Toggle Styles */
 #wrapper {
@@ -34,6 +39,7 @@ body {
 // }
 
 #sidebar-wrapper {
+    color: white;
     z-index: 1000;
     position: fixed;
     left: 250px;
