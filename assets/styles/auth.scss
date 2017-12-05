@@ -27,11 +27,16 @@
       background-color: $teal;
     }
   }
-  a:hover{
-    text-decoration: none;
-    background: $teal;
-    border-top: 1px solid white;
-    color: white;
+  a {
+    &:hover{
+      text-decoration: none;
+      background: $teal;
+      border-top: 1px solid white;
+      color: white;
+    }
+  }
+  .glyphicon {
+    top: 2px;
   }
   .switch-signin, .switch-signup {
     background: white;
