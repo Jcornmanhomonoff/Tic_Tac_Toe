@@ -4,8 +4,23 @@ body {
     overflow-x: hidden;
  }
 
-/* Toggle Styles */
+.hamburger {
+  text-align: left;
+  font-size: 2em;
+  color: white;
+}
 
+.game-title, .close-sidebar {
+  display: inline !important;
+}
+.close-sidebar {
+  display: inline;
+  float: right;
+  margin-right: 20px;
+  font-size: 1.5em;
+  margin-top: -3px;
+}
+/* Toggle Styles */
 #wrapper {
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
@@ -14,9 +29,9 @@ body {
     transition: all 0.5s ease;
 }
 
-#wrapper.toggled {
-    padding-left: 250px;
-}
+// #wrapper.toggled {
+//     padding-left: 250px;
+// }
 
 #sidebar-wrapper {
     z-index: 1000;
@@ -101,9 +116,9 @@ body {
         padding-left: 0;
     }
 
-    #wrapper.toggled {
-        padding-left: 250px;
-    }
+    // #wrapper.toggled {
+    //     padding-left: 250px;
+    // }
 
     #sidebar-wrapper {
         width: 0;
