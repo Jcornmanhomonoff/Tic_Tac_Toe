@@ -3,6 +3,7 @@
 // const getFormFields = require('../../../lib/get-form-fields')
 const api = require('../api/api')
 const ui = require('../api/ui')
+const apiEvents = require('../api/events')
 const store = require('../store')
 // const winner = require('./winner')
 
@@ -35,6 +36,9 @@ const checkWinner = function () {
     console.log(winner)
     $('#showWinner-modal').modal('show')
     $('.show-winner').text('Congratulations ' + winner + ', you win!')
+    $('#showWinner-modal').on('hidden.bs.modal', function () {
+      apiEvents.onNewGame()
+    })
     return winner
   } else {
     over = false

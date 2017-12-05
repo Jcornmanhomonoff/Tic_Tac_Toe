@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const apiEvents = require('../api/events')
 
 const signUpSuccess = (data) => {
   console.log(data)
@@ -15,6 +16,7 @@ const signUpSuccess = (data) => {
 const logInSuccess = (data) => {
   store.user = data.user
   console.log(store.user)
+  apiEvents.onNewGame()
   $('#login-form').hide()
   $('.gameboard').show()
   $('#menu-toggle').show()
