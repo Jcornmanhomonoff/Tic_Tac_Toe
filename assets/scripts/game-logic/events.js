@@ -34,7 +34,7 @@ const checkWinner = function () {
     console.log(store.gameboard)
     console.log(winner)
     $('#showWinner-modal').modal('show')
-    $('.show-winner').text('Congratulations ' + winner + ' , you win!')
+    $('.show-winner').text('Congratulations ' + winner + ', you win!')
     return winner
   } else {
     over = false
