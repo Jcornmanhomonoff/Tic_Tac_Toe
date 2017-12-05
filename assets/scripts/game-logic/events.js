@@ -32,6 +32,9 @@ const checkWinner = function () {
     $('.gameboard').addClass('not-active')
     console.log(over)
     console.log(store.gameboard)
+    console.log(winner)
+    $('#showWinner-modal').modal('show')
+    $('.show-winner').text('Congratulations ' + winner + ' , you win!')
     return winner
   } else {
     over = false
