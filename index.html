@@ -42,17 +42,21 @@
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4 text-center">
           <form id="signup-form">
-            <input name="credentials[email]" type="email" class="form-control" aria-describedby="emailHelp" id="signup-email" placeholder="email@gmail.com">
-            <input name="credentials[password]" type="password" class="form-control" id="signup-password" placeholder="Password">
-            <input name="credentials[password_confirmation]" type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password">
-            <button type="submit" class="btn btn-primary" id="signup-btn">Submit</button>
+            <div class="form">
+              <input name="credentials[email]" type="email" class="form-control" aria-describedby="emailHelp" id="signup-email" placeholder="email@gmail.com">
+              <input name="credentials[password]" type="password" class="form-control" id="signup-password" placeholder="Password">
+              <input name="credentials[password_confirmation]" type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password">
+              <button type="submit" class="btn btn-primary" id="signup-btn">Submit</button>
+            </div>
+              <a href="#" class="switch-signin">Already a user? Sign In</a>
           </form>
-          <a href="#" class="switch-signin">Already a user? Sign In</a>
-          <a href="#" class="switch-signup">Not a user? Sign Up</a>
           <form id="login-form" class="text-center">
-            <input type="email" name="credentials[email]" class="form-control" aria-describedby="emailHelp" id="login-email" placeholder="email@gmail.com">
-            <input type="password" name="credentials[password]" class="form-control" id="login-password" placeholder="Password">
-            <button type="submit" class="btn btn-primary" id="login-btn">Submit</button>
+            <div class="form">
+              <input type="email" name="credentials[email]" class="form-control" aria-describedby="emailHelp" id="login-email" placeholder="email@gmail.com">
+              <input type="password" name="credentials[password]" class="form-control" id="login-password" placeholder="Password">
+              <button type="submit" class="btn btn-primary" id="login-btn">Submit</button>
+            </div>
+            <a href="#" class="switch-signup">Not a user? Sign Up</a>
           </form>
         </div>
       </div>

@@ -1,21 +1,12 @@
 #signup-form, #login-form {
   margin-top: 150px;
   border: 1px solid white;
-  padding: 20px;
+  .form {
+    padding: 20px;
+  }
   .form-control, input {
     background: none;
     color: white;
-  }
-  button {
-    color: $teal;
-    background-color: white;
-    border-color: white;
-    margin: 30px 0 0 0;
-    border-radius: 0;
-  }
-  button:hover {
-    color: white;
-    background-color: $teal;
   }
   input {
     border-left: none;
@@ -24,5 +15,29 @@
     box-shadow: none;
     border-bottom: 1px solid white;
     border-radius: 0;
+  }
+  button {
+    color: $teal;
+    background-color: white;
+    border-color: white;
+    margin: 30px 0 10px;
+    border-radius: 0;
+    &:hover {
+      color: white;
+      background-color: $teal;
+    }
+  }
+  a:hover{
+    text-decoration: none;
+    background: $teal;
+    border-top: 1px solid white;
+    color: white;
+  }
+  .switch-signin, .switch-signup {
+    background: white;
+    color: $teal;
+    width: 100%;
+    display: block;
+    padding: 5px;
   }
 }
