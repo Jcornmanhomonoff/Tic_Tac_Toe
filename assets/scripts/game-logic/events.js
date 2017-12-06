@@ -21,13 +21,13 @@ let winner = ''
 const checkWinner = function () {
   console.log('in check winner')
   if (
-  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[1] && store.gameboard[0] === store.gameboard[2]) ||
-  (store.gameboard[3] !== '' && store.gameboard[3] === store.gameboard[4] && store.gameboard[3] === store.gameboard[5]) ||
-  (store.gameboard[6] !== '' && store.gameboard[6] === store.gameboard[7] && store.gameboard[6] === store.gameboard[8]) ||
-  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[3] && store.gameboard[0] === store.gameboard[6]) ||
-  (store.gameboard[1] !== '' && store.gameboard[1] === store.gameboard[4] && store.gameboard[1] === store.gameboard[7]) ||
-  (store.gameboard[2] !== '' && store.gameboard[2] === store.gameboard[5] && store.gameboard[2] === store.gameboard[8]) ||
-  (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[4] && store.gameboard[0] === store.gameboard[8])) {
+    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[1] && store.gameboard[0] === store.gameboard[2]) ||
+    (store.gameboard[3] !== '' && store.gameboard[3] === store.gameboard[4] && store.gameboard[3] === store.gameboard[5]) ||
+    (store.gameboard[6] !== '' && store.gameboard[6] === store.gameboard[7] && store.gameboard[6] === store.gameboard[8]) ||
+    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[3] && store.gameboard[0] === store.gameboard[6]) ||
+    (store.gameboard[1] !== '' && store.gameboard[1] === store.gameboard[4] && store.gameboard[1] === store.gameboard[7]) ||
+    (store.gameboard[2] !== '' && store.gameboard[2] === store.gameboard[5] && store.gameboard[2] === store.gameboard[8]) ||
+    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[4] && store.gameboard[0] === store.gameboard[8])) {
     over = true
     winner = currentPlayer
     $('.gameboard').addClass('not-active')
@@ -39,6 +39,12 @@ const checkWinner = function () {
     $('#showWinner-modal').on('hidden.bs.modal', function () {
       apiEvents.onNewGame()
     })
+    return winner
+  } else if (store.gameboard.every(function (i) {
+    return i !== ''
+  })) {
+    winner = 'It\'s a tie!'
+    console.log(winner)
     return winner
   } else {
     over = false
@@ -77,7 +83,7 @@ const checkWinner = function () {
 //     console.log(isWinner)
 //   })
 // }
-  // return over
+// return over
 
 let currentPlayer = 'X'
 let moves = 0
