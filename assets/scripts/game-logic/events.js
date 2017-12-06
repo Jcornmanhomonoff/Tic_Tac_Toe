@@ -45,6 +45,11 @@ const checkWinner = function () {
   })) {
     winner = 'It\'s a tie!'
     console.log(winner)
+    $('#showWinner-modal').modal('show')
+    $('.show-winner').text('It\'s a tie!')
+    $('#showWinner-modal').on('hidden.bs.modal', function () {
+      apiEvents.onNewGame()
+    })
     return winner
   } else {
     over = false
