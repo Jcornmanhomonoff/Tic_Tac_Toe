@@ -27,5 +27,6 @@ const apiAddHandlers = () => {
 
 module.exports = {
   apiAddHandlers,
-  onNewGame
+  onNewGame,
+  onGameHistory
 }

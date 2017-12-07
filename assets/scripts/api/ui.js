@@ -20,7 +20,7 @@ const updateGameSuccess = (data) => {
 const getGamesSuccess = (data) => {
   console.log(data.games.length)
   store.games = data.games
-  $('.games-played').text(store.games.length)
+  $('.game-history').text('Games Played: ' + store.games.length)
   checkGamesWon()
 }
 

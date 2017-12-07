@@ -23,6 +23,7 @@ const logInSuccess = (data) => {
   $('.switch-signup').hide()
   $('#login-form input').val('')
   $('#signup-form input').val('')
+  apiEvents.onGameHistory()
 }
 
 const changePwSuccess = () => {
