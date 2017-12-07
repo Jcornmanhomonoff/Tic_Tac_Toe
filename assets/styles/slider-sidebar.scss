@@ -23,10 +23,19 @@ body {
   margin-top: -3px;
 }
 .game-history {
-  background: #666;
+  background: $highlight-grey;
   display: none;
   padding-left: 20px;
 }
+
+.changePw-section {
+  background: $highlight-grey;
+  display: none;
+  padding-top: 10px;
+}
+
+
+/* ---COPIED STYLES---*/
 /* Toggle Styles */
 #wrapper {
     padding-left: 0;

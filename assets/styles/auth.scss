@@ -1,6 +1,14 @@
 #signup-form, #login-form {
   margin-top: 150px;
   border: 1px solid white;
+}
+
+.switch-signin, .switch-signup {
+  &:hover {
+    border-top: 1px solid white
+  }
+}
+#signup-form, #login-form, #changePw-form {
   .form {
     padding: 20px;
   }
@@ -31,7 +39,6 @@
     &:hover{
       text-decoration: none;
       background: $teal;
-      border-top: 1px solid white;
       color: white;
     }
   }
@@ -44,5 +51,15 @@
     width: 100%;
     display: block;
     padding: 5px;
+  }
+}
+
+#changePw-form {
+  button {
+    color: $highlight-grey;
+    margin: 20px 0;
+    &:hover {
+      background-color: $highlight-grey;
+    }
   }
 }

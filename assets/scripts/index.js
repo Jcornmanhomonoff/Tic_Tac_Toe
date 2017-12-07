@@ -37,6 +37,9 @@ $(() => {
     console.log('toggled')
     $('#wrapper').toggleClass('toggled')
   })
+  $('#changePw').on('click', function () {
+    $('.changePw-section').slideToggle()
+  })
   gameEvents.onClick()
 })
 
