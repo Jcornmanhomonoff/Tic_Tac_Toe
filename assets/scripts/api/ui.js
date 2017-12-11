@@ -21,18 +21,18 @@ const getGamesSuccess = (data) => {
   console.log(data.games.length)
   store.games = data.games
   $('.game-history').text('Games Played: ' + store.games.length)
-  checkGamesWon()
+  // checkGamesWon()
 }
 
 const failure = () => {
   console.log('nope')
 }
 
-const checkGamesWon = () => {
-  (store.games).forEach(function (game) {
-    console.log(game)
-  })
-}
+// const checkGamesWon = () => {
+//   (store.games).forEach(function (game) {
+//     console.log(game)
+//   })
+// }
 
 module.exports = {
   createGameSuccess,
