@@ -4,6 +4,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'slider-sidebar';
 @import 'gameboard';
 @import 'auth';
+@import 'modals';
 @import 'webkit-browser';
 
 html, body {
@@ -16,4 +17,9 @@ body {
 
 body, a, button {
   cursor: crosshair;
+}
+
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
 }

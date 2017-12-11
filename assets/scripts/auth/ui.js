@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const apiEvents = require('../api/events')
 
 const signUpSuccess = (data) => {
   console.log(data)
@@ -15,12 +16,14 @@ const signUpSuccess = (data) => {
 const logInSuccess = (data) => {
   store.user = data.user
   console.log(store.user)
+  apiEvents.onNewGame()
   $('#login-form').hide()
   $('.gameboard').show()
   $('#menu-toggle').show()
   $('.switch-signup').hide()
   $('#login-form input').val('')
   $('#signup-form input').val('')
+  apiEvents.onGameHistory()
 }
 
 const changePwSuccess = () => {
@@ -34,6 +37,8 @@ const signOutSuccess = () => {
   $('#signup-form').show()
   $('.gameboard').hide()
   $('.switch-signin').toggle()
+  $('.active').siblings().slideToggle()
+  $('.active').removeClass('active')
 }
 
 const failure = () => {

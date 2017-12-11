@@ -44,6 +44,24 @@ const authAddHandlers = () => {
   $('#signOut').on('click', onSignOut)
 }
 
+// **STYLING** //
+// Add class active to highlight open li & close all others
+$('.sidebar-nav li:not(:first-child) a').on('click', function () {
+  const currentAtag = $(this)
+  if ((currentAtag.text() !== 'New Game') && (currentAtag.text() !== 'Sign Out')) {
+    if (currentAtag.hasClass('active')) {
+      currentAtag.toggleClass('active')
+      currentAtag.siblings().slideToggle()
+    } else {
+      $('.active').siblings().slideToggle()
+      $('.active').removeClass('active')
+      currentAtag.toggleClass('active')
+      currentAtag.siblings().slideToggle()
+    }
+    // console.log(currentAtag.hasClass('active'))
+  }
+})
+
 module.exports = {
   authAddHandlers
 }
