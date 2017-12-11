@@ -20,9 +20,6 @@ const onGameHistory = function () {
 const apiAddHandlers = () => {
   $('#newGame').on('click', onNewGame)
   $('#showGames').on('click', onGameHistory)
-  $('#showGames').on('click', function () {
-    $('.game-history').slideToggle()
-  })
 }
 
 module.exports = {

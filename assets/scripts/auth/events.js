@@ -44,6 +44,18 @@ const authAddHandlers = () => {
   $('#signOut').on('click', onSignOut)
 }
 
+// **STYLING** //
+// Add class active to highlight open li
+$('.sidebar-nav li:not(:first-child)').on('click', function () {
+  const currentAtag = $(this).find('a:first-child')
+  if ((currentAtag.text() !== 'New Game') && (currentAtag.text() !== 'Sign Out')) {
+    $('.active').siblings().slideToggle()
+    $('.active').removeClass('active')
+    currentAtag.toggleClass('active')
+    currentAtag.siblings().slideToggle()
+  }
+})
+
 module.exports = {
   authAddHandlers
 }
