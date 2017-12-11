@@ -1,4 +1,5 @@
 'use strict'
+
 const store = require('../store')
 // const gameLogicUi = require('../game-logic/events')
 
@@ -24,8 +25,9 @@ const getGamesSuccess = (data) => {
   // checkGamesWon()
 }
 
-const failure = () => {
+const failure = (err) => {
   console.log('nope')
+  console.error(err)
 }
 
 // const checkGamesWon = () => {
