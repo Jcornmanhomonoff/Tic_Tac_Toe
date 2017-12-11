@@ -45,14 +45,20 @@ const authAddHandlers = () => {
 }
 
 // **STYLING** //
-// Add class active to highlight open li
-$('.sidebar-nav li:not(:first-child)').on('click', function () {
-  const currentAtag = $(this).find('a:first-child')
+// Add class active to highlight open li & close all others
+$('.sidebar-nav li:not(:first-child) a').on('click', function () {
+  const currentAtag = $(this)
   if ((currentAtag.text() !== 'New Game') && (currentAtag.text() !== 'Sign Out')) {
-    $('.active').siblings().slideToggle()
-    $('.active').removeClass('active')
-    currentAtag.toggleClass('active')
-    currentAtag.siblings().slideToggle()
+    if (currentAtag.hasClass('active')) {
+      currentAtag.toggleClass('active')
+      currentAtag.siblings().slideToggle()
+    } else {
+      $('.active').siblings().slideToggle()
+      $('.active').removeClass('active')
+      currentAtag.toggleClass('active')
+      currentAtag.siblings().slideToggle()
+    }
+    // console.log(currentAtag.hasClass('active'))
   }
 })
 
