@@ -39,6 +39,12 @@ const signOutSuccess = () => {
   $('.switch-signin').toggle()
   $('.active').siblings().slideToggle()
   $('.active').removeClass('active')
+  // reset store & gameboard upon logging out
+  store.gameboard = []
+  store.game = {}
+  store.games = []
+  store.user = {}
+  $('.box').text('')
 }
 
 const failure = () => {
