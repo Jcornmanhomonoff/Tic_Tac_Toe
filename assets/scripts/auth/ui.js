@@ -37,6 +37,8 @@ const signOutSuccess = () => {
   $('#signup-form').show()
   $('.gameboard').hide()
   $('.switch-signin').toggle()
+  $('.active').siblings().slideToggle()
+  $('.active').removeClass('active')
 }
 
 const failure = () => {
