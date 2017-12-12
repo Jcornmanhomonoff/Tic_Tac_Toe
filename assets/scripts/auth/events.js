@@ -3,13 +3,16 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
+// automatically sign in on successful sign up
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
   api.signUp(data)
-  .done(ui.signUpSuccess, data)
-  .catch(ui.failure)
+  .then(ui.signUpSuccess)
+  .then(() => api.logIn(data))
+  .then(ui.logInSuccess)
+  .catch(ui.signUpFailure)
 }
 
 const onLogIn = function (event) {
@@ -18,7 +21,7 @@ const onLogIn = function (event) {
   console.log(data)
   api.logIn(data)
   .done(ui.logInSuccess)
-  .fail(ui.failure)
+  .fail(ui.logInFailure)
 }
 
 const onChangePw = function (event) {
@@ -27,7 +30,7 @@ const onChangePw = function (event) {
   console.log(data)
   api.changePw(data)
   .done(ui.changePwSuccess)
-  .fail(ui.failure)
+  .fail(ui.changePwFailure)
 }
 
 const onSignOut = function (event) {

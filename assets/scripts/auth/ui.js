@@ -4,7 +4,7 @@ const store = require('../store')
 const apiEvents = require('../api/events')
 
 const signUpSuccess = (data) => {
-  console.log(data)
+  console.log('in sign up success data is ', data)
   store.user = data.user
   $('#signup-form').toggle()
   $('.switch-signin').toggle()
@@ -47,14 +47,41 @@ const signOutSuccess = () => {
   $('.box').text('')
 }
 
+const changePwFailure = () => {
+  $('#changePw-form').addClass('shake')
+  setTimeout(function () {
+    console.log(this)
+    $('#changePw-form').removeClass('shake')
+  }, 800)
+}
+
+const signUpFailure = () => {
+  $('#signup-form').addClass('shake')
+  setTimeout(function () {
+    console.log(this)
+    $('#signup-form').removeClass('shake')
+  }, 800)
+}
+
+const logInFailure = () => {
+  $('#login-form').addClass('shake')
+  setTimeout(function () {
+    console.log(this)
+    $('#login-form').removeClass('shake')
+  }, 800)
+}
+
 const failure = () => {
   console.log('nope')
 }
 
 module.exports = {
   signUpSuccess,
+  signUpFailure,
   logInSuccess,
+  logInFailure,
   changePwSuccess,
   signOutSuccess,
+  changePwFailure,
   failure
 }
