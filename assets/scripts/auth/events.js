@@ -3,12 +3,15 @@ const getFormFields = require('../../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 
+// automatically sign in on successful sign up
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   console.log(data)
   api.signUp(data)
-  .done(ui.signUpSuccess, data)
+  .then(ui.signUpSuccess)
+  .then(() => api.logIn(data))
+  .then(ui.logInSuccess)
   .catch(ui.signUpFailure)
 }
 

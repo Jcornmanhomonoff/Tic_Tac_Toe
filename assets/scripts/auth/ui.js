@@ -4,7 +4,7 @@ const store = require('../store')
 const apiEvents = require('../api/events')
 
 const signUpSuccess = (data) => {
-  console.log(data)
+  console.log('in sign up success data is ', data)
   store.user = data.user
   $('#signup-form').toggle()
   $('.switch-signin').toggle()
