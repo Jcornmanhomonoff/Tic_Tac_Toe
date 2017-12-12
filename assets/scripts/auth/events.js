@@ -9,7 +9,7 @@ const onSignUp = function (event) {
   console.log(data)
   api.signUp(data)
   .done(ui.signUpSuccess, data)
-  .catch(ui.failure)
+  .catch(ui.signUpFailure)
 }
 
 const onLogIn = function (event) {
@@ -18,7 +18,7 @@ const onLogIn = function (event) {
   console.log(data)
   api.logIn(data)
   .done(ui.logInSuccess)
-  .fail(ui.failure)
+  .fail(ui.logInFailure)
 }
 
 const onChangePw = function (event) {
@@ -27,7 +27,7 @@ const onChangePw = function (event) {
   console.log(data)
   api.changePw(data)
   .done(ui.changePwSuccess)
-  .fail(ui.failure)
+  .fail(ui.changePwFailure)
 }
 
 const onSignOut = function (event) {
