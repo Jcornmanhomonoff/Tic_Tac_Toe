@@ -10,6 +10,9 @@ const store = require('../store')
 let over = false
 let winner = ''
 
+let currentPlayer = 'X'
+let moves = 0
+
 // const wins = [[store.gameboard[0], store.gameboard[1], store.gameboard[2]],
 //              [store.gameboard[3], store.gameboard[4], store.gameboard[5]],
 //              [store.gameboard[6], store.gameboard[7], store.gameboard[8]],
@@ -17,6 +20,27 @@ let winner = ''
 //              [store.gameboard[1], store.gameboard[4], store.gameboard[7]],
 //              [store.gameboard[2], store.gameboard[5], store.gameboard[8]],
 //              [store.gameboard[0], store.gameboard[4], store.gameboard[8]]]
+
+const showWinModal = function () {
+  $('#showWinner-modal').on('hidden.bs.modal', function () {
+    console.log('in the show winner function')
+    apiEvents.onNewGame()
+  })
+}
+
+const switchPlayer = function () {
+  if (currentPlayer === 'X') {
+    currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
+  }
+}
+
+const resetGame = function () {
+  console.log('in reset Player')
+  currentPlayer = 'X'
+  moves = 0
+}
 
 const checkWinner = function () {
   console.log('in check winner')
@@ -31,14 +55,10 @@ const checkWinner = function () {
     over = true
     winner = currentPlayer
     $('.gameboard').addClass('not-active')
-    console.log(over)
-    console.log(store.gameboard)
-    console.log(winner)
     $('#showWinner-modal').modal('show')
+    showWinModal()
+    resetGame()
     $('.show-winner').text('Congratulations ' + winner + ', you win!')
-    $('#showWinner-modal').on('hidden.bs.modal', function () {
-      apiEvents.onNewGame()
-    })
     return winner
   } else if (store.gameboard.every(function (i) {
     return i !== ''
@@ -47,12 +67,12 @@ const checkWinner = function () {
     console.log(winner)
     $('#showWinner-modal').modal('show')
     $('.show-winner').text('It\'s a tie!')
-    $('#showWinner-modal').on('hidden.bs.modal', function () {
-      apiEvents.onNewGame()
-    })
+    showWinModal()
+    resetGame()
     return winner
   } else {
     over = false
+    switchPlayer()
     console.log(over)
     console.log(store.gameboard)
   }
@@ -90,17 +110,6 @@ const checkWinner = function () {
 // }
 // return over
 
-let currentPlayer = 'X'
-let moves = 0
-
-const switchPlayer = function () {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
-    currentPlayer = 'X'
-  }
-}
-
 // alternate between placing X & O on the board &
 // push into store.gameboard array
 const onClick = function () {
@@ -116,7 +125,6 @@ const onClick = function () {
         store.gameboard[index] = currentPlayer
         console.log(store.gameboard)
         checkWinner()
-        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
@@ -127,7 +135,6 @@ const onClick = function () {
         store.gameboard[index] = currentPlayer
         console.log(store.gameboard)
         checkWinner()
-        switchPlayer()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
@@ -140,5 +147,7 @@ const onClick = function () {
 
 module.exports = {
   onClick,
-  switchPlayer
+  switchPlayer,
+  currentPlayer,
+  moves
 }
