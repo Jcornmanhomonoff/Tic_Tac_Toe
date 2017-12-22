@@ -7,6 +7,11 @@
     font-size: 16px;
   }
 
+#changePw-form input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s !important;
+  -webkit-box-shadow: 0 0 0 1000px $highlight-grey inset !important;
+  background-color: $highlight-grey;
+}
   #changePw-form {
     margin: 0 10px;
     input:-webkit-autofill,
@@ -15,6 +20,7 @@
     input:-webkit-autofill:active {
         transition: background-color 5000s ease-in-out 0s !important;
         -webkit-box-shadow: 0 0 0 1000px $highlight-grey inset !important;
+        background-color: $highlight-grey;
     }
   }
 
