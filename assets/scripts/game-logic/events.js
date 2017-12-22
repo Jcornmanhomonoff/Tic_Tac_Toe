@@ -45,13 +45,14 @@ const resetGame = function () {
 const checkWinner = function () {
   console.log('in check winner')
   if (
-    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[1] && store.gameboard[0] === store.gameboard[2]) ||
-    (store.gameboard[3] !== '' && store.gameboard[3] === store.gameboard[4] && store.gameboard[3] === store.gameboard[5]) ||
-    (store.gameboard[6] !== '' && store.gameboard[6] === store.gameboard[7] && store.gameboard[6] === store.gameboard[8]) ||
-    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[3] && store.gameboard[0] === store.gameboard[6]) ||
-    (store.gameboard[1] !== '' && store.gameboard[1] === store.gameboard[4] && store.gameboard[1] === store.gameboard[7]) ||
-    (store.gameboard[2] !== '' && store.gameboard[2] === store.gameboard[5] && store.gameboard[2] === store.gameboard[8]) ||
-    (store.gameboard[0] !== '' && store.gameboard[0] === store.gameboard[4] && store.gameboard[0] === store.gameboard[8])) {
+    ((store.gameboard[0] !== '') && (store.gameboard[0] === store.gameboard[1]) && (store.gameboard[0] === store.gameboard[2])) ||
+    ((store.gameboard[3] !== '') && (store.gameboard[3] === store.gameboard[4]) && (store.gameboard[3] === store.gameboard[5])) ||
+    ((store.gameboard[6] !== '') && (store.gameboard[6] === store.gameboard[7]) && (store.gameboard[6] === store.gameboard[8])) ||
+    ((store.gameboard[0] !== '') && (store.gameboard[0] === store.gameboard[3]) && (store.gameboard[0] === store.gameboard[6])) ||
+    ((store.gameboard[1] !== '') && (store.gameboard[1] === store.gameboard[4]) && (store.gameboard[1] === store.gameboard[7])) ||
+    ((store.gameboard[2] !== '') && (store.gameboard[2] === store.gameboard[5]) && (store.gameboard[2] === store.gameboard[8])) ||
+    ((store.gameboard[0] !== '') && (store.gameboard[0] === store.gameboard[4]) && (store.gameboard[0] === store.gameboard[8])) ||
+    ((store.gameboard[2] !== '') && (store.gameboard[2] === store.gameboard[4]) && (store.gameboard[2] === store.gameboard[6]))) {
     over = true
     winner = currentPlayer
     $('.gameboard').addClass('not-active')
