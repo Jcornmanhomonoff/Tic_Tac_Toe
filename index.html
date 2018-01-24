@@ -1,147 +1,120 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <title>Tic-Tac-Toe</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <title>Tic-Tac-Toe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Do not add `link` tags unless you know what you are doing -->
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!-- Do not add `link` tags unless you know what you are doing -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 
-  <!-- Do not add `script` tags unless you know what you are doing -->
-  <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
-  <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
-</head>
+    <!-- Do not add `script` tags unless you know what you are doing -->
+    <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+    <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+  </head>
 
-<body>
-  <div id="wrapper">
-    <!-- Sidebar -->
-    <div id="sidebar-wrapper">
-      <ul class="sidebar-nav">
-        <li class="sidebar-brand">
-          <a href="#" class="game-title">Tic-Tac-Toe</a>
-          <a href="#" class="close-sidebar">&times;</a>
-        </li>
-        <li>
-          <a href="#" id="newGame">New Game</a>
-        </li>
-        <li>
-          <!-- Link trigger modal -->
-          <a id="showGames">Game History</a>
-          <div class="game-history"></div>
-        </li>
-        <li>
-          <!-- Link trigger modal -->
-          <a id="changePw" data-toggle="modal" data-target="#changePw-modal">Change Password</a>
-          <div class="row changePw-section">
-            <div class="col-sm-10 col-sm-offset-1">
-              <form id="changePw-form" class="text-center">
-                <input name="passwords[old]" type="password" class="form-control" placeholder="Password">
-                <input name="passwords[new]" type="password" class="form-control" placeholder="Confirm Password">
-                <button type="submit" class="btn btn-primary" id="changePw-btn">Save Password</button>
-              </form>
+  <body>
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand">
+            <a href="#" class="game-title">Tic-Tac-Toe</a>
+            <a href="#" class="close-sidebar">&times;</a>
+          </li>
+          <li>
+            <a href="#" id="newGame">New Game</a>
+          </li>
+          <li>
+            <!-- GAME HISTORY -->
+            <a id="showGames">Game History</a>
+            <div class="game-history"></div>
+          </li>
+          <li>
+            <!--CHANGE PASSWORD FORM -->
+            <a id="changePw" data-toggle="modal" data-target="#changePw-modal">Change Password</a>
+            <div class="row changePw-section">
+              <div class="col-sm-10 col-sm-offset-1">
+                <form id="changePw-form" class="text-center">
+                  <input name="passwords[old]" type="password" class="form-control" placeholder="Password">
+                  <input name="passwords[new]" type="password" class="form-control" placeholder="Confirm Password">
+                  <button type="submit" class="btn btn-primary" id="changePw-btn">Save Password</button>
+                </form>
+              </div>
             </div>
-          </div>
-        </li>
-        <li>
-          <a href="#" id="signOut">Sign Out</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- SIGN UP/IN FORMS-->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-4 col-sm-offset-4 text-center">
-          <form id="signup-form">
-            <div class="form">
-              <input name="credentials[email]" type="email" class="form-control" aria-describedby="emailHelp" id="signup-email" placeholder="email@gmail.com">
-              <input name="credentials[password]" type="password" class="form-control" id="signup-password" placeholder="Password">
-              <input name="credentials[password_confirmation]" type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password">
-              <button type="submit" class="btn btn-primary" id="signup-btn">Submit</button>
-            </div>
-              <a href="#" class="switch-signin">Already a user? <b>Sign In</b> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
-          </form>
-          <form id="login-form" class="text-center">
-            <div class="form">
-              <input type="email" name="credentials[email]" class="form-control" aria-describedby="emailHelp" id="login-email" placeholder="email@gmail.com">
-              <input type="password" name="credentials[password]" class="form-control" id="login-password" placeholder="Password">
-              <button type="submit" class="btn btn-primary" id="login-btn">Submit</button>
-            </div>
-            <a href="#" class="switch-signup">Not a user? <b>Sign Up</b> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
-          </form>
-        </div>
+          </li>
+          <li>
+            <a href="#" id="signOut">Sign Out</a>
+          </li>
+        </ul>
       </div>
-    </div>
 
-    <!-- GAMEBOARD-->
-    <div id="page-content-wrapper">
-      <div class="container-fluid text-center">
-        <div class="hamburger">
-          <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" id="menu-toggle"></span>
-        </div>
-        <div class="gameboard not-active">
-          <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-              <div class="row">
-                <div data-index=0 class="box col-xs-4 border-bottom"></div>
-                <div data-index=1 class="box col-xs-4 border-left border-bottom"></div>
-                <div data-index=2 class="box col-xs-4 border-left border-bottom"></div>
+      <!-- SIGN UP/IN FORMS-->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-4 text-center">
+            <form id="signup-form">
+              <div class="form">
+                <input name="credentials[email]" type="email" class="form-control" aria-describedby="emailHelp" id="signup-email" placeholder="email@gmail.com">
+                <input name="credentials[password]" type="password" class="form-control" id="signup-password" placeholder="Password">
+                <input name="credentials[password_confirmation]" type="password" class="form-control" id="signup-password-confirm" placeholder="Confirm Password">
+                <button type="submit" class="btn btn-primary" id="signup-btn">Submit</button>
               </div>
-              <div class="row">
-                <div data-index=3 class="box col-xs-4"></div>
-                <div data-index=4 class="box col-xs-4 border-left"></div>
-                <div data-index=5 class="box col-xs-4 border-left"></div>
+                <a href="#" class="switch-signin">Already a user? <b>Sign In</b> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
+            </form>
+            <form id="login-form" class="text-center">
+              <div class="form">
+                <input type="email" name="credentials[email]" class="form-control" aria-describedby="emailHelp" id="login-email" placeholder="email@gmail.com">
+                <input type="password" name="credentials[password]" class="form-control" id="login-password" placeholder="Password">
+                <button type="submit" class="btn btn-primary" id="login-btn">Submit</button>
               </div>
-              <div class="row">
-                <div data-index=6 class="box col-xs-4 border-top"></div>
-                <div data-index=7 class="box col-xs-4 border-left border-top"></div>
-                <div data-index=8 class="box col-xs-4 border-left border-top"></div>
-              </div>
-            </div>
+              <a href="#" class="switch-signup">Not a user? <b>Sign Up</b> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+            </form>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- MODAL CONTENT -->
-  <!-- Change Password Modal -->
-  <!-- <div class="modal fade" id="changePw-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Change Password</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form id="changePw-form">
-            <input name="passwords[old]" type="password" class="form-control" placeholder="Password">
-            <input name="passwords[new]" type="password" class="form-control" placeholder="Confirm Password">
-            <button type="submit" class="btn btn-primary" id="signup-btn">Save Password</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- Show Winner Modal -->
-  <div class="modal fade" id="showWinner-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <!-- <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div> -->
-        <div class="modal-body text-center">
-          <div class="show-winner"></div>
+      <!-- GAMEBOARD-->
+      <div id="page-content-wrapper">
+        <div class="container-fluid text-center">
+          <div class="hamburger">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" id="menu-toggle"></span>
+          </div>
+          <div class="gameboard not-active">
+            <div class="row">
+              <div class="col-sm-6 col-sm-offset-3">
+                <div class="row">
+                  <div data-index=0 class="box col-xs-4 border-bottom"></div>
+                  <div data-index=1 class="box col-xs-4 border-left border-bottom"></div>
+                  <div data-index=2 class="box col-xs-4 border-left border-bottom"></div>
+                </div>
+                <div class="row">
+                  <div data-index=3 class="box col-xs-4"></div>
+                  <div data-index=4 class="box col-xs-4 border-left"></div>
+                  <div data-index=5 class="box col-xs-4 border-left"></div>
+                </div>
+                <div class="row">
+                  <div data-index=6 class="box col-xs-4 border-top"></div>
+                  <div data-index=7 class="box col-xs-4 border-left border-top"></div>
+                  <div data-index=8 class="box col-xs-4 border-left border-top"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</body>
 
+    <!-- MODAL CONTENT -->
+    <!-- Show Winner Modal -->
+    <div class="modal fade" id="showWinner-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body text-center">
+            <div class="show-winner"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
