@@ -6,6 +6,17 @@ const authEvents = require('./auth/events')
 const gameEvents = require('./game-logic/events')
 const apiEvents = require('./api/events')
 
+const switchForms = () => {
+  $('#login-form').toggle()
+  $('#signup-form').toggle()
+  $('.switch-signin').toggle()
+  $('.switch-signup').toggle()
+}
+
+const toggleMenu = () => {
+  $('#wrapper').toggleClass('toggled')
+}
+
 $(() => {
   setAPIOrigin(location, config)
   authEvents.authAddHandlers()
@@ -15,27 +26,19 @@ $(() => {
   $('.gameboard').hide()
   $('.switch-signup').hide()
   $('.switch-signup').on('click', function () {
-    $('#login-form').toggle()
     $('#signin-form').toggle()
-    $('#signup-form').toggle()
-    $('.switch-signin').toggle()
-    $('.switch-signup').toggle()
+    switchForms()
   })
   $('.switch-signin').on('click', function () {
-    $('#login-form').toggle()
-    $('#signup-form').toggle()
-    $('.switch-signup').toggle()
-    $('.switch-signin').toggle()
+    switchForms()
   })
   $('#menu-toggle').on('click', function (e) {
     e.preventDefault()
-    console.log('toggled')
-    $('#wrapper').toggleClass('toggled')
+    toggleMenu()
   })
   $('.close-sidebar').on('click', function (e) {
     e.preventDefault()
-    console.log('toggled')
-    $('#wrapper').toggleClass('toggled')
+    toggleMenu()
   })
   gameEvents.onClick()
 })

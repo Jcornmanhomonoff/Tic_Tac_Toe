@@ -4,7 +4,6 @@ const store = require('../store')
 const apiEvents = require('../api/events')
 
 const signUpSuccess = (data) => {
-  console.log('in sign up success data is ', data)
   store.user = data.user
   $('#signup-form').toggle()
   $('.switch-signin').toggle()
@@ -15,7 +14,6 @@ const signUpSuccess = (data) => {
 
 const logInSuccess = (data) => {
   store.user = data.user
-  console.log(store.user)
   apiEvents.onNewGame()
   $('#login-form').hide()
   $('.gameboard').show()
@@ -31,7 +29,6 @@ const changePwSuccess = () => {
 }
 
 const signOutSuccess = () => {
-  console.log('successful sign out')
   $('#menu-toggle').hide()
   $('#wrapper').removeClass('toggled')
   $('#signup-form').show()
@@ -50,7 +47,6 @@ const signOutSuccess = () => {
 const changePwFailure = () => {
   $('#changePw-form').addClass('shake')
   setTimeout(function () {
-    console.log(this)
     $('#changePw-form').removeClass('shake')
   }, 800)
 }
@@ -58,7 +54,6 @@ const changePwFailure = () => {
 const signUpFailure = () => {
   $('#signup-form').addClass('shake')
   setTimeout(function () {
-    console.log(this)
     $('#signup-form').removeClass('shake')
   }, 800)
 }
@@ -66,7 +61,6 @@ const signUpFailure = () => {
 const logInFailure = () => {
   $('#login-form').addClass('shake')
   setTimeout(function () {
-    console.log(this)
     $('#login-form').removeClass('shake')
   }, 800)
 }
