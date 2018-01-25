@@ -23,7 +23,6 @@ let moves = 0
 
 const showWinModal = function () {
   $('#showWinner-modal').on('hidden.bs.modal', function () {
-    console.log('in the show winner function')
     apiEvents.onNewGame()
   })
 }
@@ -37,13 +36,11 @@ const switchPlayer = function () {
 }
 
 const resetGame = function () {
-  console.log('in reset Player')
   currentPlayer = 'X'
   moves = 0
 }
 
 const checkWinner = function () {
-  console.log('in check winner')
   if (
     ((store.gameboard[0] !== '') && (store.gameboard[0] === store.gameboard[1]) && (store.gameboard[0] === store.gameboard[2])) ||
     ((store.gameboard[3] !== '') && (store.gameboard[3] === store.gameboard[4]) && (store.gameboard[3] === store.gameboard[5])) ||
@@ -65,7 +62,6 @@ const checkWinner = function () {
     return i !== ''
   })) {
     winner = 'It\'s a tie!'
-    console.log(winner)
     $('#showWinner-modal').modal('show')
     $('.show-winner').text('It\'s a tie!')
     showWinModal()
@@ -74,20 +70,12 @@ const checkWinner = function () {
   } else {
     over = false
     switchPlayer()
-    console.log(over)
-    console.log(store.gameboard)
   }
   return over
 }
 
-// const checkDraw = function () {
-//   console.log('there are ', moves)
-//   console.log('game is ', over)
-// }
-
 // const facheckWinner = function () {
 //   wins.forEach(function (arr) {
-//     console.log(currentPlayer)
 //     for (let i = 0; i < arr.length; i++) {
 //       if (arr[i] === currentPlayer) {
 //         over = true
@@ -95,18 +83,13 @@ const checkWinner = function () {
 //     }
 //     return over
 //   })
-//   console.log(wins)
-//   console.log(over)
 // }
 
 // const checkWinner = function () {
 //   wins.forEach(function (arr) {
 //     const isWinner = arr.every(function (i) {
-//       console.log(i)
-//       console.log(arr)
 //       return i === currentPlayer
 //     })
-//     console.log(isWinner)
 //   })
 // }
 // return over
@@ -118,13 +101,11 @@ const onClick = function () {
     const currentCell = $(this)
     if (currentCell.text() === '') {
       moves += 1
-      console.log(moves)
       if (moves % 2 !== 0) {
         currentCell.text('X')
         const value = currentCell.text()
         const index = currentCell.attr('data-index')
         store.gameboard[index] = currentPlayer
-        console.log(store.gameboard)
         checkWinner()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
@@ -134,13 +115,11 @@ const onClick = function () {
         const value = $(this).text()
         const index = currentCell.attr('data-index')
         store.gameboard[index] = currentPlayer
-        console.log(store.gameboard)
         checkWinner()
         api.updateGame(index, value, over)
           .done(ui.updateGameSuccess)
           .catch(ui.failure)
       }
-      console.log(over)
       return over
     }
   })

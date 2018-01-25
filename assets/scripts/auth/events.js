@@ -7,30 +7,27 @@ const ui = require('./ui')
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
   api.signUp(data)
-  .then(ui.signUpSuccess)
-  .then(() => api.logIn(data))
-  .then(ui.logInSuccess)
-  .catch(ui.signUpFailure)
+    .then(ui.signUpSuccess)
+    .then(() => api.logIn(data))
+    .then(ui.logInSuccess)
+    .catch(ui.signUpFailure)
 }
 
 const onLogIn = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
   api.logIn(data)
-  .done(ui.logInSuccess)
-  .fail(ui.logInFailure)
+    .done(ui.logInSuccess)
+    .fail(ui.logInFailure)
 }
 
 const onChangePw = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
-  console.log(data)
   api.changePw(data)
-  .done(ui.changePwSuccess)
-  .fail(ui.changePwFailure)
+    .done(ui.changePwSuccess)
+    .fail(ui.changePwFailure)
 }
 
 const onSignOut = function (event) {
@@ -61,7 +58,6 @@ $('.sidebar-nav li:not(:first-child) a').on('click', function () {
       currentAtag.toggleClass('active')
       currentAtag.siblings().slideToggle()
     }
-    // console.log(currentAtag.hasClass('active'))
   }
 })
 
