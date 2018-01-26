@@ -63,6 +63,18 @@
       background-color: $highlight-grey;
     }
   }
+  .pwSuccessMessage {
+    display: none;
+    position: absolute;
+    text-indent: 0;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $aqua;
+    width: 100%;
+    color: $grey;
+    padding: 40px 0;
+  }
 }
 
 
