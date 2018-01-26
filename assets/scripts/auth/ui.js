@@ -44,6 +44,7 @@ const signOutSuccess = () => {
   $('.switch-signin').toggle()
   $('.active').siblings().slideToggle()
   $('.active').removeClass('active')
+  $('#changePw-form input').val('')
   // reset store & gameboard upon logging out
   store.gameboard = []
   store.game = {}
