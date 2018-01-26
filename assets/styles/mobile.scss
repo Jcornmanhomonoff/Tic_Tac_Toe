@@ -16,5 +16,14 @@
 }
 
 @media (hover: none) {
-    a:hover { background: none;}
+  .sidebar-nav li {
+    a:hover {
+      background: none;
+      color: white;
+    }
+  }
+  .active {
+    background: white !important;
+    color: $grey !important;
+  }
 }
