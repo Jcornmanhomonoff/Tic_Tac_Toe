@@ -25,7 +25,11 @@ const logInSuccess = (data) => {
 }
 
 const changePwSuccess = () => {
-  console.log('Change password success')
+  $('.pwSuccessMessage').fadeIn(1000)
+  setTimeout(function () {
+    $('.pwSuccessMessage').fadeOut(1000)
+    $('#changePw-form input').val('')
+  }, 1500)
 }
 
 const signOutSuccess = () => {
